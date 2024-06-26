@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'authApi',
     'djoser',
     'rest_framework',
-    'rest_framework.simplejwt',
+    # 'rest_framework.simplejwt',
     'corsheaders',
 
 ]
@@ -139,11 +140,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOWED_ORIGINS = [
-
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -176,16 +172,25 @@ DJOSER = {
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
     'TOKEN_MODEL': None,       # To Delete User Must Set it to None
     'SERIALIZERS':{
-        # 'user_create': 'account.serializers.UserCreateSerializer',
-        # 'user': 'account.serializers.UserCreateSerializer',
-        # 'user_delete': 'djoser.serializers.UserDeleteSerializer',
+        'user_create': 'authApi.serializers.UserCreateSerializer',
+        'user': 'authApi.serializers.UserCreateSerializer',
+        'user_delete': 'authApi.serializers.UserDeleteSerializer',
     },
     # 'EMAIL': {
-    #     'activation': 'account.email.ActivationEmail',
-    #     'confirmation': 'account.email.ConfirmationEmail',
-    #     'password_reset': 'account.email.PasswordResetEmail',
-    #     'password_changed_confirmation': 'account.email.PasswordChangedConfirmationEmail',
+    #     'activation': 'authApi.email.ActivationEmail',
+    #     'confirmation': 'authApi.email.ConfirmationEmail',
+    #     'password_reset': 'authApi.email.PasswordResetEmail',
+    #     'password_changed_confirmation': 'authApi.email.PasswordChangedConfirmationEmail',
     # },
 
 
 }
+
+AUTH_USER_MODEL = 'authApi.User'
+
+
+CORS_ALLOWED_ORIGINS = [
+
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
