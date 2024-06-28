@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'authApi',
     'djoser',
     'rest_framework',
-    # 'rest_framework.simplejwt',
+    'rest_framework_simplejwt',
     'corsheaders',
 
 ]
@@ -66,6 +66,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'DjoserAuth.urls'
+
 
 
 TEMPLATES = [
@@ -155,8 +156,8 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-    "ROTATE_REFRESH_TOKENS": True,
-    "UPDATE_LAST_LOGIN": True,
+    # "ROTATE_REFRESH_TOKENS": True,
+    # "UPDATE_LAST_LOGIN": True,
 }
 
 # Djoser Settings
@@ -189,8 +190,12 @@ DJOSER = {
 AUTH_USER_MODEL = 'authApi.User'
 
 
-CORS_ALLOWED_ORIGINS = [
+# CORS_ALLOWED_ORIGINS = [
 
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
+#     'http://localhost:5173/',
+#     'http://127.0.0.1:5173',
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
