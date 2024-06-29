@@ -20,7 +20,7 @@ const ProtectedComp = ({children}) => {
         }
 
         try{
-            const access = await api.post("/api/token/refresh/",{refresh:refreshToken})
+            const access = await api.post("/api/auth/jwt/refresh/",{refresh:refreshToken})
             if (access.status==200)
             localStorage.setItem(ACCESS_TOKEN,access)
             setIsAutherised(true)

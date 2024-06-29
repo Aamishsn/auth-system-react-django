@@ -3,7 +3,7 @@ import FormLogin from "../components/FormLogin"
 
 const Register = () => {
   return (
-    <FormLogin route="/api/user/register/" method="register" />
+    <FormLogin route="/api/auth/users/" method="register" />
   )
 }
 

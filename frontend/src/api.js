@@ -11,8 +11,6 @@ api.interceptors.request.use(
         const token = localStorage.getItem(ACCESS_TOKEN)
         if(token){
             config.headers.Authorization = `JWT ${token}`
-            // config.headers['Content-Type'] = `application/json`
-            config.headers.ContentType = `application/json`
         }
         return config
     },
