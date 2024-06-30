@@ -154,7 +154,7 @@ EMAIL_HOST_PASSWORD = "tmuchrktykacsqdu"
 
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     # "ROTATE_REFRESH_TOKENS": True,
     # "UPDATE_LAST_LOGIN": True,
@@ -171,10 +171,13 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'password-reset/{uid}/{token}',
     'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
+
     'TOKEN_MODEL': None,       # To Delete User Must Set it to None
     'SERIALIZERS':{
         'user_create': 'authApi.serializers.UserCreateSerializer',
         'user': 'authApi.serializers.UserCreateSerializer',
+        'set_password': 'djoser.serializers.SetPasswordSerializer',
+        'set_password_retype': 'djoser.serializers.SetPasswordRetypeSerializer',
         'user_delete': 'authApi.serializers.UserDeleteSerializer',
     },
     # 'EMAIL': {

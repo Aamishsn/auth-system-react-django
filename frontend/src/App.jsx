@@ -5,6 +5,9 @@ import Register from "./pages/Register"
 import HomePage from "./pages/HomePage"
 import NotFound from "./pages/NotFound"
 import ProtectedComp from "./components/ProtectedComp"
+import Activate from "./pages/Activate"
+import ResendActivationEmail from "./pages/ResendActivationEmail"
+import ForgetPass from "./pages/ForgetPass"
 
 function Logout() {
   localStorage.clear()
@@ -31,6 +34,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
+        <Route path="/activate/:uid/:token" element={<Activate />} />
+        <Route path="/forget-password" element={<ForgetPass/>} />
+        <Route path="/resend-activation-email" element={<ResendActivationEmail />} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>

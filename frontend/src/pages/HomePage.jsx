@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import api from "../api";
-import Note from "../components/Note" 
+// import Note from "../components/Note" 
 import "../styles/Home.css"
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants'; 
 
 
 const HomePage = () => {
@@ -11,47 +12,68 @@ const HomePage = () => {
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
 
-    useEffect(() => {
-        getNotes();
+    // useEffect(() => {
+    //     getNotes();
+    // }, []);
+
+    // const getNotes = () => {
+    //     api
+    //         .get("/api/notes/")
+    //         .then((res) => res.data)
+    //         .then((data) => {
+    //             setNotes(data);
+    //             console.log(data);
+    //         })
+    //         .catch((err) => alert(err));
+    // };
+
+    // const deleteNote = (id) => {
+    //     api
+    //         .delete(`/api/notes/delete/${id}/`)
+    //         .then((res) => {
+    //             if (res.status === 204) alert("Note deleted!");
+    //             else alert("Failed to delete note.");
+    //             getNotes();
+    //         })
+    //         .catch((error) => alert(error));
+    // };
+
+    // const createNote = (e) => {
+    //     e.preventDefault();
+    //     api
+    //         .post("/api/notes/", { content, title })
+    //         .then((res) => {
+    //             if (res.status === 201) alert("Note created!");
+    //             else alert("Failed to make note.");
+    //             getNotes();
+    //         })
+    //         .catch((err) => alert(err));
+    // };
+
+        useEffect(() => {
+        getUser();
     }, []);
 
-    const getNotes = () => {
-        api
-            .get("/api/notes/")
+
+     const getUser = () => {
+        const res=api
+            .get("api/auth/users/me/")
             .then((res) => res.data)
             .then((data) => {
                 setNotes(data);
                 console.log(data);
             })
-            .catch((err) => alert(err));
+            .catch((err) => {
+                return(
+                <h1>PLEASE LOGIN TO CONTINUE</h1>
+
+            )});
     };
 
-    const deleteNote = (id) => {
-        api
-            .delete(`/api/notes/delete/${id}/`)
-            .then((res) => {
-                if (res.status === 204) alert("Note deleted!");
-                else alert("Failed to delete note.");
-                getNotes();
-            })
-            .catch((error) => alert(error));
-    };
-
-    const createNote = (e) => {
-        e.preventDefault();
-        api
-            .post("/api/notes/", { content, title })
-            .then((res) => {
-                if (res.status === 201) alert("Note created!");
-                else alert("Failed to make note.");
-                getNotes();
-            })
-            .catch((err) => alert(err));
-    };
 
     return (
         <div>
-            <div>
+            {/* <div>
                 <h2>Notes</h2>
                 {notes.map((note) => (
                     <Note note={note} onDelete={deleteNote} key={note.id} />
@@ -80,8 +102,17 @@ const HomePage = () => {
                 ></textarea>
                 <br />
                 <input type="submit" value="Submit"></input>
-            </form>
+            </form> */}
 
+            <h1>this is home page </h1>
+
+            <h1>welcome {notes.name}! Your id and email address is</h1>
+
+
+            <h3>{notes.id}</h3>
+            <h3>{notes.email}</h3>
+
+            <a href="/logout">LOGOUT</a>
 
         </div>
     )

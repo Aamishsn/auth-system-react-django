@@ -33,7 +33,7 @@ function FormLogin({ route, method }) {
         navigate("/login");
       }
     } catch (error) {
-      alert(error);
+      alert('Invalid credentials!');
     } finally {
       setLoading(false);
     }
@@ -78,8 +78,11 @@ function FormLogin({ route, method }) {
 
       {loading && <LoadingIndicator />}
       <button className="form-button" type="submit">
-        {name}
+        {heading}
       </button>
+
+
+      {!showEmail&& <a href="/forget-password" style={{textDecoration: 'none', color: 'blue'}}>Forget Password???</a>}
     </form>
   );
 }
