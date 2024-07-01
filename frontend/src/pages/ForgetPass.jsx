@@ -19,10 +19,9 @@ const ForgetPass = () => {
 
     try {
 
-      if (method === "login") {
         const res = await api.post("/api/auth/users/set_password/", { new_password, re_new_password, current_password });
 
-      } 
+      
     } catch (error) {
       alert(error);
     } finally {
