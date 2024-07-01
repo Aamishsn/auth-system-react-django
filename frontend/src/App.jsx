@@ -9,6 +9,8 @@ import Activate from "./pages/Activate";
 import ResendActivationEmail from "./pages/ResendActivationEmail";
 import ForgetPass from "./pages/ForgetPass";
 import ForgetPassword from "./pages/ForgetPassword";
+import ForgetPassActivation from "./pages/ForgetPassActivation";
+import ConfirmPass from "./pages/ConfirmPass";
 
 function Logout() {
   localStorage.clear();
@@ -36,6 +38,9 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="/activate/:uid/:token" element={<Activate />} />
+        <Route path="/password-reset/:uid/:token" element={<ConfirmPass/>} />
+
+        
         <Route
           path="/change-password"
           element={
@@ -48,7 +53,9 @@ function App() {
           path="/resend-activation-email"
           element={<ResendActivationEmail />}
         />
+
         <Route path="/forget-password" element={<ForgetPassword />}></Route>
+
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
