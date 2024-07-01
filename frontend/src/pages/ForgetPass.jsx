@@ -26,13 +26,14 @@ const ForgetPass = () => {
       alert(error);
     } finally {
       setLoading(false);
+      navigate("/logout");
     }
   };
 
   return (
     <>
       <form onSubmit={handleSubmit} className="form-container">
-        <h1>RESET PASSWORD</h1>
+        <h1>CHANGE PASSWORD</h1>
         <input
           className="form-input"
           type="text"
@@ -59,7 +60,7 @@ const ForgetPass = () => {
 
         {loading && <LoadingIndicator />}
         <button className="form-button" type="submit">
-          SEND PASSWORD RESET EMAIL
+          CHANGE PASSWORD
         </button>
       </form>
     </>

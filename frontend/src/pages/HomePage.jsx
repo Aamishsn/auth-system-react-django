@@ -113,6 +113,9 @@ const HomePage = () => {
             <h3>{notes.email}</h3>
 
             <a href="/logout">LOGOUT</a>
+            <a href="/change-password">change password</a>
+
+            
 
         </div>
     )

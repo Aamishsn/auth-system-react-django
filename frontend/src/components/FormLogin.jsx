@@ -82,7 +82,7 @@ function FormLogin({ route, method }) {
       </button>
 
 
-      {!showEmail&& <a href="/forget-password" style={{textDecoration: 'none', color: 'blue'}}>Forget Password???</a>}
+      {/* {!showEmail&& <a href="/forget-password" style={{textDecoration: 'none', color: 'blue'}}>Forget Password???</a>} */}
     </form>
   );
 }
