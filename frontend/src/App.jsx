@@ -8,6 +8,7 @@ import ProtectedComp from "./components/ProtectedComp";
 import Activate from "./pages/Activate";
 import ResendActivationEmail from "./pages/ResendActivationEmail";
 import ForgetPass from "./pages/ForgetPass";
+import ForgetPassword from "./pages/ForgetPassword";
 
 function Logout() {
   localStorage.clear();
@@ -47,6 +48,7 @@ function App() {
           path="/resend-activation-email"
           element={<ResendActivationEmail />}
         />
+        <Route path="/forget-password" element={<ForgetPassword />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>

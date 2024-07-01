@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 
 import LoadingIndicator from "../components/LoadingIndicator";
-
+// this is basically page to resent password
 const ForgetPass = () => {
   const [re_new_password, setPassword] = useState("");
   const [new_password, setNewPassword] = useState("");
