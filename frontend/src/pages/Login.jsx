@@ -1,35 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import FormLogin from "../components/FormLogin"
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import FormLogin from "../components/FormLogin";
 import { ACCESS_TOKEN } from "../constants";
-
+import {Navigate} from "react-router-dom"
 const Login = () => {
-  // const navigate = useNavigate()
-  // const [loggedIn, setLoggedIn] = useState(false)
+  const [isAutherised, setIsAutherised] = useState(null);
 
-  // const token = localStorage.getItem(ACCESS_TOKEN)
+  useEffect(() => {
+    auth().catch(() => setIsAutherised(false));
+  }, []);
 
-  // const checkLoggedIn = () => {
-  //   setLoggedIn(!!token)
-  //   return !!token
-  // }
+  const auth = async () => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
 
-  // useEffect(() => {
-  //   if (checkLoggedIn()) {
-  //     navigate('/');
-  //   }
-  // }, [navigate, loggedIn]);
+    if (!token) {
+      setIsAutherised(false);
+      return;
+    } else {
+      setIsAutherised(true);
+    }
+  };
 
+  return isAutherised ?  <Navigate to="/" />:<FormLogin route="/api/auth/jwt/create/" method="login" />;
+};
 
-
-  return (
-        <>
-            {/* {loggedIn && <h1>YOU ARE LOGGED IN</h1> } */}
-            {/* {!token && <FormLogin route="/api/auth/jwt/create/" method="login" /> */}
-            <FormLogin route="/api/auth/jwt/create/" method="login" />
-            
-            </>
-  )
-}
-
-export default Login
+export default Login;
