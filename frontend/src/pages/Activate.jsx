@@ -22,7 +22,9 @@ const Activate = () => {
 
     }catch(error){
         
-      alert("YOUR ACCOUNT HAS BEEN ACTIVATED PLEASE LOGIN TO CONTINUE")}
+      alert("YOUR ACCOUNT HAS BEEN ACTIVATED PLEASE LOGIN TO CONTINUE");
+      navigate("/login");
+    }
 
     finally{
       setLoading(false)

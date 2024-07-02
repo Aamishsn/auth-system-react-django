@@ -33,7 +33,11 @@ function FormLogin({ route, method }) {
         navigate("/login");
       }
     } catch (error) {
+      if (method === "login") {
       alert('Invalid credentials!');
+      } else {
+        alert("please provide correct credentials")
+      }
     } finally {
       setLoading(false);
     }
